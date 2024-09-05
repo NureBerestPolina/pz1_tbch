@@ -9,11 +9,14 @@ for (int i = 1; i < 4; i++)
     Console.WriteLine($"Block #{i} was successfully added to the blockchain \nBlock Hash: {block.Hash}\n");
 }
 
+
 Console.WriteLine("Demo-test of chain integrity:");
 foreach (Block block in blockchain.List)
 {
     Console.WriteLine(block.GetInfo());
 }
+blockchain.IsChainValid();
+
 
 Console.WriteLine("Demo of blockchain security:");
 string modifiedData = "Modified Strange Data 2";
@@ -24,3 +27,4 @@ foreach (Block block in blockchain.List)
 {
     Console.WriteLine(block.GetInfo());
 }
+blockchain.IsChainValid();
