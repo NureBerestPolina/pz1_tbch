@@ -19,9 +19,9 @@ blockchain.IsChainValid();
 
 
 Console.WriteLine("Demo of blockchain security:");
-string modifiedData = "Modified Strange Data 2";
-blockchain.List[2].StoredData = modifiedData;
-blockchain.List[2].Hash = blockchain.List[2].CalculateHash();
+string modifiedData = "Modified Strange Data 1";
+blockchain.List[1].StoredData = modifiedData;
+blockchain.List[1].Hash = blockchain.List[1].CalculateHash();
 
 foreach (Block block in blockchain.List)
 {
