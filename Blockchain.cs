@@ -1,20 +1,23 @@
 ﻿public class Blockchain
 {
     public int Difficulty { get; private set; } = 4;
-
     public List<Block> List;
 
     public Blockchain()
     {
-        List = new List<Block>() 
-        { 
-            CreateGenesisBlock() 
+        List = new List<Block>()
+        {
+            CreateGenesisBlock()
         };
     }
 
     private Block CreateGenesisBlock()
     {
-        return new Block(0, DateTimeOffset.UtcNow.ToUnixTimeSeconds(), "The first (genesis) Block");
+        Dictionary<string, string> genesisTransactions = new Dictionary<string, string>
+        {
+            {"Tx0", "Genesis block creation"}
+        };
+        return new Block(0, DateTimeOffset.UtcNow.ToUnixTimeSeconds(), genesisTransactions);
     }
 
     public Block GetLastBlock()
@@ -44,7 +47,7 @@
 
     public bool IsChainValid()
     {
-        for (int i = 1; i < List.Count; i++) 
+        for (int i = 1; i < List.Count; i++)
         {
             Block currentBlock = List[i];
             Block previousBlock = List[i - 1];
